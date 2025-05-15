@@ -11,4 +11,7 @@ interface MoviesApi {
 
     @GET("upcoming?")
     fun getUpcomingMovies(@Query("api_key") api_key: String): Call<Upcoming>
+
+    @GET("top_rated?")
+    fun getTopRatedMovies(@Query("api_key") api_key: String): Call<Toprated>
 }
