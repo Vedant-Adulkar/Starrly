@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.vizzio.Model.MoviesItem
 import com.example.vizzio.Model.upcommingdata
 import com.example.vizzio.View.DetailsActivity
 import com.example.vizzio.View.Uppcoming_movie_adapter
@@ -56,7 +55,7 @@ class Home : Fragment() {
         popularMovieAdapter = MoviesAdapter { selectedMovie ->
             val intent = Intent(requireContext(), DetailsActivity::class.java).apply {
                 putExtra("poster_path", selectedMovie.poster_path)
-                putExtra("name", selectedMovie.original_name ?: selectedMovie.original_name)  // fallback if name missing
+                putExtra("name", selectedMovie.original_title ?: selectedMovie.original_title)  // fallback if name missing
                 putExtra("rating", selectedMovie.vote_average.toString())
                 putExtra("duration", "N/A")
                 putExtra("overview", selectedMovie.overview)

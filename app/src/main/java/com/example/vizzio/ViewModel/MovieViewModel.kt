@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.vizzio.Model.MoviesItem
 import com.example.vizzio.Model.Upcoming
-import com.example.vizzio.Model.upcommingdata
 import com.example.vizzio.Model.movies
+import com.example.vizzio.Model.upcommingdata
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

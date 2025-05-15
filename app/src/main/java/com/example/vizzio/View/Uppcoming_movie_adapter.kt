@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.vizzio.Model.MoviesItem
 import com.example.vizzio.Model.upcommingdata
 import com.example.vizzio.databinding.MovieslayoutBinding
 
