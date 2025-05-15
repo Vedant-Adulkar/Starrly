@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_blue"
+    tools:context=".View.DetailsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/moviePosterImage"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:scaleType="centerCrop" />
+
+        <!-- Favorite icon -->
+        <ImageView
+            android:id="@+id/favIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/oval_button_bg"
+            android:padding="8dp"
+            android:layout_gravity="end"
+            tools:srcCompat="@drawable/fav" />
+
+        <!-- Movie Info Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/movieRatingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/star"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/movieDurationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:drawableStart="@drawable/time"
+                android:text="0"
+                android:textColor="@color/white"
+                android:padding="5dp" />
+        </LinearLayout>
+
+        <!-- Movie Title -->
+        <TextView
+            android:id="@+id/movieNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Movie Name"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <!-- RecyclerView (use fixed height or wrap_content only inside NestedScrollView) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:nestedScrollingEnabled="false" />
+
+        <!-- Summary Label -->
+        <TextView
+            android:id="@+id/summaryLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Summary"
+            android:textColor="@color/yellow"
+            android:textSize="18sp"
+            android:layout_marginTop="24dp" />
+
+        <!-- Movie Summary -->
+        <TextView
+            android:id="@+id/movieSummaryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Movie summary text goes here..."
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+</ScrollView>
