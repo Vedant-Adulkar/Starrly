@@ -6,17 +6,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vizzio.Model.MoviesItem
+import com.example.vizzio.Model.upcommingdata
 import com.example.vizzio.View.DetailsActivity
+import com.example.vizzio.View.Uppcoming_movie_adapter
 import com.example.vizzio.databinding.FragmentHomeBinding
 
 class Home : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: MovieViewModel
-    private lateinit var movieAdapter: MoviesAdapter
+
+    private lateinit var popularMovieAdapter: MoviesAdapter
+    private lateinit var upcomingMovieAdapter: Uppcoming_movie_adapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,27 +32,33 @@ class Home : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        prepareRecyclerView()
+        setupPopularMoviesRecyclerView()
+        setupUpcomingMoviesRecyclerView()
 
         viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
 
-
-        viewModel.observeMovieLiveData().observe(viewLifecycleOwner, Observer { movieList ->
-            movieAdapter.setMovieList(movieList)
+        // Observe Popular Movies LiveData
+        viewModel.observePopularMovies().observe(viewLifecycleOwner, Observer { movieList ->
+            popularMovieAdapter.setMovieList(movieList)
         })
 
+        // Observe Upcoming Movies LiveData
+        viewModel.observeUpcomingMovies().observe(viewLifecycleOwner, Observer { upcomingList ->
+            upcomingMovieAdapter.setMovieList(upcomingList)
+        })
+
+        // Fetch movies from ViewModel
         viewModel.getPopularMovies()
+        viewModel.getUpcomingMovies()
     }
 
-    private fun prepareRecyclerView() {
-        movieAdapter = MoviesAdapter { selectedMovie ->
-
+    private fun setupPopularMoviesRecyclerView() {
+        popularMovieAdapter = MoviesAdapter { selectedMovie ->
             val intent = Intent(requireContext(), DetailsActivity::class.java).apply {
                 putExtra("poster_path", selectedMovie.poster_path)
-                putExtra("name", selectedMovie.original_name)
+                putExtra("name", selectedMovie.original_name ?: selectedMovie.original_name)  // fallback if name missing
                 putExtra("rating", selectedMovie.vote_average.toString())
-                putExtra("duration",  "N/A")
+                putExtra("duration", "N/A")
                 putExtra("overview", selectedMovie.overview)
             }
             startActivity(intent)
@@ -57,9 +66,25 @@ class Home : Fragment() {
 
         binding.rvMovies.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = popularMovieAdapter
+        }
+    }
 
-            adapter = movieAdapter
+    private fun setupUpcomingMoviesRecyclerView() {
+        upcomingMovieAdapter = Uppcoming_movie_adapter { selectedMovie ->
+            val intent = Intent(requireContext(), DetailsActivity::class.java).apply {
+                putExtra("poster_path", selectedMovie.poster_path)
+                putExtra("name", selectedMovie.original_title)
+                putExtra("rating", selectedMovie.vote_average.toString())
+                putExtra("duration", "N/A")
+                putExtra("overview", selectedMovie.overview)
+            }
+            startActivity(intent)
         }
 
+        binding.uppcomingrecy.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = upcomingMovieAdapter
+        }
     }
 }
