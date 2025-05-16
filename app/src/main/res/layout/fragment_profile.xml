@@ -5,10 +5,158 @@
     android:layout_height="match_parent"
     tools:context=".View.Profile">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#1C1C1C"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Profile Picture -->
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_user_placeholder"
+                android:background="@drawable/circle_background"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="Profile Picture"
+                android:scaleType="centerInside" />
+
+            <!-- Username -->
+            <TextView
+                android:id="@+id/usernameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="blackvisage"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Joined Date -->
+            <TextView
+                android:id="@+id/joinedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Joined Jul 2024"
+                android:textColor="#AAAAAA"
+                android:textSize="14sp"
+                android:drawableStart="@drawable/ic_calendar"
+                android:drawablePadding="6dp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Edit Profile Button -->
+            <Button
+                android:id="@+id/editProfileBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit profile"
+                android:textColor="#2196F3"
+                android:textStyle="bold"
+                android:background="@null"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Stats: Ratings -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="#2C2C2C"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp">
+
+                <TextView
+                    android:text="Ratings"
+                    android:textColor="#CCCCCC"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:text="17"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Watchlist -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="#2C2C2C"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp">
+
+                <TextView
+                    android:text="Watchlist"
+                    android:textColor="#CCCCCC"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:text="12"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Lists -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="#2C2C2C"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp">
+
+                <TextView
+                    android:text="Lists"
+                    android:textColor="#CCCCCC"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:text="5"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- More -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="#2C2C2C"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_more"
+                    android:tint="#FFFFFF"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:text="More"
+                    android:textColor="#CCCCCC"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </FrameLayout>

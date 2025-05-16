@@ -17,16 +17,24 @@
         android:theme="@style/Theme.Vizzio"
         tools:targetApi="31">
         <activity
-            android:name=".View.DetailsActivity"
+            android:name=".View.Register"
             android:exported="false" />
         <activity
-            android:name=".View.fragmentswitcher"
-            android:exported="true">
+            android:name=".View.Login"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".View.DetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.fragmentswitcher"
+            android:exported="false">
+
         </activity>
         <activity
             android:name=".View.MainActivity"

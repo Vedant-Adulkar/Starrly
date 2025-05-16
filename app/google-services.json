@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "926610910284",
+    "project_id": "vizzio-31331",
+    "storage_bucket": "vizzio-31331.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926610910284:android:eef583d554ae76c71458e9",
+        "android_client_info": {
+          "package_name": "com.example.vizzio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnwF9wT3diLZQJc6ZRUPA9jZMgmHQ_fKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
