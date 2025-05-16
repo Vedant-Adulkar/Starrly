@@ -49,7 +49,7 @@ class fragmentswitcher : AppCompatActivity(),NavigationView.OnNavigationItemSele
             R.id.nav_Home -> replaceFragment(Home())
             R.id.nav_prof -> replaceFragment(Profile())
             R.id.nav_setting -> replaceFragment(Settings())
-            R.id.nav_share -> replaceFragment(support())
+            R.id.nav_series -> replaceFragment(Tvseries())
             R.id.nav_logout -> {startActivity(Intent(this@fragmentswitcher,Login::class.java))
             Toast.makeText(this@fragmentswitcher,"Logged Out Succesfully",Toast.LENGTH_SHORT).show()}}
         drawerLayout.closeDrawer((GravityCompat.START))

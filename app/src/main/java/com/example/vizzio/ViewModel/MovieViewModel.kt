@@ -48,7 +48,7 @@ class MovieViewModel : ViewModel() {
             })
     }
 
-    // New method for Top Rated movies
+
     fun getTopRatedMovies() {
         RetrofitInstance.api.getTopRatedMovies("285447fc233b48898616ca17c4841cd1")
             .enqueue(object : Callback<Toprated> {
@@ -72,7 +72,7 @@ class MovieViewModel : ViewModel() {
         return upcomingMovieLiveData
     }
 
-    // New observer for top rated movies
+
     fun observeTopRatedMovies(): LiveData<List<topdata>> {
         return topRatedMovieLiveData
     }

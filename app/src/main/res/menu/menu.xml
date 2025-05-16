@@ -10,16 +10,17 @@
             android:id="@+id/nav_Home"
 
             />
+
+        <item
+            android:title="Tv Series"
+            android:icon="@drawable/microphone"
+            android:id="@+id/nav_series"
+
+            />
         <item
             android:title="profile"
             android:icon="@drawable/microphone"
             android:id="@+id/nav_prof"
-
-            />
-        <item
-            android:title="share"
-            android:icon="@drawable/microphone"
-            android:id="@+id/nav_share"
 
             />
         <item

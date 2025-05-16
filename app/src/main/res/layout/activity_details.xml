@@ -19,15 +19,8 @@
             android:layout_height="400dp"
             android:scaleType="centerCrop" />
 
-        <!-- Favorite icon -->
-        <ImageView
-            android:id="@+id/favIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/oval_button_bg"
-            android:padding="8dp"
-            android:layout_gravity="end"
-            tools:srcCompat="@drawable/fav" />
+
+
 
         <!-- Movie Info Row -->
         <LinearLayout
@@ -46,16 +39,27 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:padding="5dp" />
+<!--            <ImageView-->
+<!--                android:id="@+id/favIcon"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:background="@drawable/oval_button_bg"-->
+<!--                android:padding="4dp"-->
+<!--                android:layout_gravity="end"-->
+<!--                app:srcCompat="@drawable/fav" />-->
+
 
             <TextView
                 android:id="@+id/movieDurationText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+
                 android:drawableStart="@drawable/time"
                 android:text="0"
                 android:textColor="@color/white"
                 android:padding="5dp" />
+
         </LinearLayout>
 
         <!-- Movie Title -->
@@ -67,6 +71,7 @@
             android:text="Movie Name"
             android:textColor="@color/white"
             android:textSize="24sp" />
+
 
         <!-- RecyclerView (use fixed height or wrap_content only inside NestedScrollView) -->
         <androidx.recyclerview.widget.RecyclerView

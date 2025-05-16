@@ -26,11 +26,11 @@ class Home : Fragment() {
 
     private var fullPopularMovieList: List<MoviesItem> = emptyList()
     private var fullUpcomingMovieList: List<upcommingdata> = emptyList()
-    private var fullTopRatedMovieList: List<topdata> = emptyList()    // <-- For top rated
+    private var fullTopRatedMovieList: List<topdata> = emptyList()
 
     private lateinit var popularMovieAdapter: MoviesAdapter
     private lateinit var upcomingMovieAdapter: Uppcoming_movie_adapter
-    private lateinit var topRatedMovieAdapter: Topratedadapter    // <-- Top rated adapter
+    private lateinit var topRatedMovieAdapter: Topratedadapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,34 +45,32 @@ class Home : Fragment() {
 
         setupPopularMoviesRecyclerView()
         setupUpcomingMoviesRecyclerView()
-        setupTopRatedMoviesRecyclerView()  // <-- Setup Top Rated RecyclerView
+        setupTopRatedMoviesRecyclerView()
 
         viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
 
-        // Observe Popular Movies LiveData
         viewModel.observePopularMovies().observe(viewLifecycleOwner, Observer { movieList ->
             fullPopularMovieList = movieList
             popularMovieAdapter.setMovieList(movieList)
         })
 
-        // Observe Upcoming Movies LiveData
+
         viewModel.observeUpcomingMovies().observe(viewLifecycleOwner, Observer { upcomingList ->
             fullUpcomingMovieList = upcomingList
             upcomingMovieAdapter.setMovieList(upcomingList)
         })
 
-        // Observe Top Rated Movies LiveData
         viewModel.observeTopRatedMovies().observe(viewLifecycleOwner, Observer { topRatedList ->
             fullTopRatedMovieList = topRatedList
             topRatedMovieAdapter.setMovieList(topRatedList)
         })
 
-        // Fetch movies
+
         viewModel.getPopularMovies()
         viewModel.getUpcomingMovies()
-        viewModel.getTopRatedMovies()   // <-- Fetch top rated movies
+        viewModel.getTopRatedMovies()
 
-        // Single Search bar listener filtering all 3 lists
+
         binding.filter.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -89,7 +87,7 @@ class Home : Fragment() {
         popularMovieAdapter = MoviesAdapter { selectedMovie ->
             val intent = Intent(requireContext(), DetailsActivity::class.java).apply {
                 putExtra("poster_path", selectedMovie.poster_path)
-                putExtra("name", selectedMovie.original_title ?: selectedMovie.original_title)
+                putExtra("name", selectedMovie.title ?: selectedMovie.title)
                 putExtra("rating", selectedMovie.vote_average.toString())
                 putExtra("duration", "N/A")
                 putExtra("overview", selectedMovie.overview)
@@ -107,7 +105,7 @@ class Home : Fragment() {
         upcomingMovieAdapter = Uppcoming_movie_adapter { selectedMovie ->
             val intent = Intent(requireContext(), DetailsActivity::class.java).apply {
                 putExtra("poster_path", selectedMovie.poster_path)
-                putExtra("name", selectedMovie.original_title)
+                putExtra("name", selectedMovie.title)
                 putExtra("rating", selectedMovie.vote_average.toString())
                 putExtra("duration", "N/A")
                 putExtra("overview", selectedMovie.overview)
@@ -125,7 +123,7 @@ class Home : Fragment() {
         topRatedMovieAdapter = Topratedadapter { selectedMovie ->
             val intent = Intent(requireContext(), DetailsActivity::class.java).apply {
                 putExtra("poster_path", selectedMovie.poster_path)
-                putExtra("name", selectedMovie.original_title ?: selectedMovie.original_title)
+                putExtra("name", selectedMovie.title ?: selectedMovie.title)
                 putExtra("rating", selectedMovie.vote_average.toString())
                 putExtra("duration", "N/A")
                 putExtra("overview", selectedMovie.overview)
@@ -144,7 +142,7 @@ class Home : Fragment() {
             fullPopularMovieList
         } else {
             fullPopularMovieList.filter { movie ->
-                movie.original_title?.contains(query, ignoreCase = true) == true
+                movie.title?.contains(query, ignoreCase = true) == true
             }
         }
         popularMovieAdapter.setMovieList(filteredList)
@@ -155,7 +153,7 @@ class Home : Fragment() {
             fullUpcomingMovieList
         } else {
             fullUpcomingMovieList.filter { movie ->
-                movie.original_title?.contains(query, ignoreCase = true) == true
+                movie.title?.contains(query, ignoreCase = true) == true
             }
         }
         upcomingMovieAdapter.setMovieList(filteredList)
@@ -166,7 +164,7 @@ class Home : Fragment() {
             fullTopRatedMovieList
         } else {
             fullTopRatedMovieList.filter { movie ->
-                movie.original_title?.contains(query, ignoreCase = true) == true
+                movie.title?.contains(query, ignoreCase = true) == true
             }
         }
         topRatedMovieAdapter.setMovieList(filteredList)
