@@ -31,7 +31,7 @@ class MoviesAdapter(
             .load("https://image.tmdb.org/t/p/w500${movie.poster_path}")
             .into(holder.binding.movieImage)
 
-        holder.binding.movieName.text = movie.original_title
+        holder.binding.movieName.text = movie.title
 
 
         holder.itemView.setOnClickListener {

@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.example.vizzio.Model.FavoriteMovie
 import com.example.vizzio.R
 import com.google.android.material.navigation.NavigationView
 
@@ -48,8 +49,8 @@ class fragmentswitcher : AppCompatActivity(),NavigationView.OnNavigationItemSele
         when(item.itemId){
             R.id.nav_Home -> replaceFragment(Home())
             R.id.nav_prof -> replaceFragment(Profile())
-            R.id.nav_setting -> replaceFragment(Settings())
-            R.id.nav_share -> replaceFragment(support())
+            R.id.nav_setting -> replaceFragment(FavoritesFragment())
+            R.id.nav_series -> replaceFragment(Tvseries())
             R.id.nav_logout -> {startActivity(Intent(this@fragmentswitcher,Login::class.java))
             Toast.makeText(this@fragmentswitcher,"Logged Out Succesfully",Toast.LENGTH_SHORT).show()}}
         drawerLayout.closeDrawer((GravityCompat.START))
